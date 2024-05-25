@@ -1,1 +1,15 @@
-graphviz
+pip install graphviz
+
+The project includes unit tests for the lexer and parser. To run the tests, use the following command:
+python -m unittest discover tests
+
+Install Graphviz (ensure Graphviz binaries are in your PATH):
+    - Windows: [Graphviz Windows Installer](https://graphviz.gitlab.io/_pages/Download/Download_windows.html)
+    - macOS: `brew install graphviz`
+    - Linux: `sudo apt-get install graphviz`
+
+For Windows, you may need to add the Graphviz binaries to your PATH. You can do this by adding the following code to your Python script in main.py:
+
+import os
+# This should be the Graphviz library's location on PATH, 
+os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz/bin'

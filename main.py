@@ -3,7 +3,7 @@ from analyzer.parser import parse
 from graphviz import Digraph
 import os
 
-# This should be the Graphviz library's location on PATH
+# This should be the Graphviz library's location on PATH, 
 os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz/bin'
 
 def visualize_parse_tree(node, graph=None, parent=None):
