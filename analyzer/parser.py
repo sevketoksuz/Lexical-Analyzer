@@ -107,6 +107,16 @@ def parse_if_statement(tokens, index):
                 if_node.add_child(condition_node)
                 block_node, index = parse_block(tokens, index)
                 if_node.add_child(block_node)
+                if index < len(tokens) and tokens[index]['type'] == 'KEYWORD' and tokens[index]['value'] == 'else':
+                    else_node = Node('KEYWORD', 'else')
+                    index += 1
+                    if index < len(tokens) and tokens[index]['type'] == 'KEYWORD' and tokens[index]['value'] == 'if':
+                        else_if_node, index = parse_if_statement(tokens, index)
+                        else_node.add_child(else_if_node)
+                    else:
+                        else_block_node, index = parse_block(tokens, index)
+                        else_node.add_child(else_block_node)
+                    if_node.add_child(else_node)
                 return if_node, index
             else:
                 raise SyntaxError(f"Expected ')' after condition, but found {tokens[index]}")

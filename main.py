@@ -21,7 +21,36 @@ def visualize_parse_tree(node, graph=None, parent=None):
     return graph
 
 def main():
-    code = "x = 5 + 3.14; if (x > 10) { y = 2.0 * x; }"
+    code = """
+    a = 10 * (2 + 3);
+    if (a < 50) {
+        b = a - 10;
+        if (b > 20) {
+            c = b / 2;
+            if (c == 10) {
+                d = c * 3.14;
+            } else {
+                e = d + 5;
+            }
+        } else if (b == 10 || b == 15) {
+            f = b + 5;
+            if (f > 20 && f < 30) {
+                g = f * 2;
+            }
+        } else {
+            h = b - 1;
+        }
+    } else {
+        i = a + 5;
+    }
+    x = (a + b) * (c - d);
+    y = x / 2 + (f - g) * h;
+    if (x > y) {
+        result = x;
+    } else {
+        result = y;
+    }
+    """
     lexer = Lexer(code)
     tokens = lexer.get_tokens()
     for token in tokens:
